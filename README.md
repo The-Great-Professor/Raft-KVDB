@@ -5,6 +5,7 @@
 Raft协议中的基本功能，详细内容见Raft论文。
 https://www.usenix.org/conference/atc14/technical-sessions/presentation/ongaro
 
+### 选举Protobuf RPC
 ```
 message RequestVoteArgs  {
 	int32 Term         =1; // 任期号
@@ -19,8 +20,9 @@ message RequestVoteReply  {
 }
 ```
 
+### 日志、心跳Protobuf RPC
 ```
-message LogEntry{
+message LogEntry  {
     bytes Command  =1;
 	int32 LogTerm  =2;
 	int32 LogIndex =3;
@@ -43,6 +45,7 @@ message AppendEntriesReply {
 }
 ```
 
+### 快照Protobuf RPC
 ```
 message InstallSnapshotRequest  {
 	int32 LeaderId                 =1; // 领导者id
